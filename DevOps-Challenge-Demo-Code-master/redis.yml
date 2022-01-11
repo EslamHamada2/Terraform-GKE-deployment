@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-pod
+  labels:
+    app: my-app
+    name: redis-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+      name: redis-pod 
+  template:
+    metadata:
+      name: redis-pod
+      labels:
+        app: my-app
+        name: redis-pod
+    spec:
+      containers:
+        - name: redis
+          image: gcr.io/newproject-final/redis-image 
+          ports:
+            - containerPort: 6379
